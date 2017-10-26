@@ -16,7 +16,6 @@ public class FXMLController implements Initializable {
     private void handleButtonAction(ActionEvent event) {
         System.out.println("You clicked me!");
         label.setText("Aplicacion Funcionando en MAVEN y Java Fx!");
-        label.setText("Hola Mundo");
     }
     
     @Override
