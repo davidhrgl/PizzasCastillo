@@ -1,37 +1,55 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.escom.pizzascastillo;
 
+import java.io.IOException;
 import javafx.application.Application;
-import static javafx.application.Application.launch;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-
+/**
+ *
+ * @author davidhrgl
+ */
 public class MainApp extends Application {
-
+    private Stage primaryStage;
+    
     @Override
-    public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Scene.fxml"));
-        
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add("/styles/Styles.css");
-        
-        stage.setTitle("JavaFX and Maven");
-        stage.setScene(scene);
-        stage.show();
+    public void start(Stage primaryStage) {
+       this.primaryStage = primaryStage;
+       this.primaryStage.setTitle("Pizzas Castillo");
+       
+       initPantallaPrincipal();
     }
 
     /**
-     * The main() method is ignored in correctly deployed JavaFX application.
-     * main() serves only as fallback in case the application can not be
-     * launched through deployment artifacts, e.g., in IDEs with limited FX
-     * support. NetBeans ignores main().
-     *
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         launch(args);
     }
 
+    private void initPantallaPrincipal() {
+        try{
+            Parent root;
+            root = FXMLLoader.load(MainApp.class.getResource("/fxml/PantallaPrincipal.fxml"));
+            
+            Scene scene  = new Scene(root);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        }catch(IOException e){
+        e.printStackTrace();
+        }
+    }
+    
 }
